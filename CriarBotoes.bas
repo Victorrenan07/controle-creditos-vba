@@ -78,7 +78,7 @@ Sub CriarBotoesPainel()
         btnAbrir.ShapeRange.Line.Visible = msoFalse
     Next i
     
-    MsgBox "Botoes criados com sucesso! Salve o arquivo.", vbInformation
+    MsgBox "Botões criados com sucesso! Salve o arquivo.", vbInformation
 End Sub
 
 ' Subs individuais para cada linha (necessario para botoes)
@@ -103,7 +103,7 @@ Sub AbrirLinhaPainel(r As Integer)
     Set wsPainel = Sheets("PAINEL")
     
     If wsPainel.Cells(r, 2).Value = "" Then
-        MsgBox "Esta linha nao contem um credito.", vbInformation
+        MsgBox "Esta linha não contém um crédito.", vbInformation
         Exit Sub
     End If
     
@@ -133,5 +133,5 @@ Sub AbrirLinhaPainel(r As Integer)
         End If
     Next ws
     
-    MsgBox "Aba nao encontrada para: " & tipoCred, vbExclamation
+    MsgBox "Aba não encontrada para: " & tipoCred, vbExclamation
 End Sub
