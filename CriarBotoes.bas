@@ -27,7 +27,7 @@ Sub CriarBotoesPainel()
     Dim btn1 As Button
     Set btn1 = ws.Buttons.Add(rngNovo.Left, rngNovo.Top, rngNovo.Width, rngNovo.Height)
     With btn1
-        .Caption = Chr(10) & Chr(10) & "  + NOVO CREDITO"
+        .Caption = Chr(10) & Chr(10) & "  + NOVO CR" & Chr(201) & "DITO"
         .OnAction = "NovoCredito"
         .Font.Size = 10
         .Font.Bold = True
@@ -45,6 +45,7 @@ Sub CriarBotoesPainel()
         .OnAction = "ComplementoCredito"
         .Font.Size = 10
         .Font.Bold = True
+        .Characters.Font.Color = RGB(255, 255, 255)
     End With
     btn2.ShapeRange.Fill.ForeColor.RGB = RGB(112, 173, 71)
     btn2.ShapeRange.Line.Visible = msoFalse
@@ -57,6 +58,7 @@ Sub CriarBotoesPainel()
         .OnAction = "AtualizarPainel"
         .Font.Size = 10
         .Font.Bold = True
+        .Characters.Font.Color = RGB(255, 255, 255)
     End With
     btn3.ShapeRange.Fill.ForeColor.RGB = RGB(68, 114, 196)
     btn3.ShapeRange.Line.Visible = msoFalse
@@ -69,10 +71,11 @@ Sub CriarBotoesPainel()
         Dim btnAbrir As Button
         Set btnAbrir = ws.Buttons.Add(rngAbrir.Left, rngAbrir.Top, rngAbrir.Width, rngAbrir.Height)
         With btnAbrir
-            .Caption = "-> Abrir"
+            .Caption = Chr(8594) & " Abrir"
             .OnAction = "AbrirLinha" & i
             .Font.Size = 9
             .Font.Bold = True
+            .Characters.Font.Color = RGB(255, 255, 255)
         End With
         btnAbrir.ShapeRange.Fill.ForeColor.RGB = RGB(31, 56, 100)
         btnAbrir.ShapeRange.Line.Visible = msoFalse

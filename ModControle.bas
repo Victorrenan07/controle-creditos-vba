@@ -31,26 +31,28 @@ Sub AtualizarPainel()
     Next i
     
     r = 13
-    
+
+    Dim sufixo As String
+    Dim tipoCred As String
+    Dim regime As String
+    Dim per1 As String
+    Dim per2 As String
+    Dim valorAp As Double
+    Dim saldo As Double
+    Dim status As String
+
     For Each ws In ThisWorkbook.Sheets
         If Left(ws.Name, 5) = "QD - " Then
             If r > 27 Then Exit For
-            
-            Dim sufixo As String
+
             sufixo = Mid(ws.Name, 6)
-            
-            Dim tipoCred As String
-            Dim regime As String
-            Dim per1 As String
-            Dim per2 As String
-            Dim valorAp As Double
-            Dim saldo As Double
-            Dim status As String
             
             tipoCred = ws.Range("B13").Value
             regime = ws.Range("A1").Value
-            per1 = Format(ws.Range("G13").Value, "MM/YYYY")
-            per2 = Format(ws.Range("H13").Value, "MM/YYYY")
+            per1 = ws.Range("G13").Value
+            per2 = ws.Range("H13").Value
+            If per1 = "" Then per1 = "?"
+            If per2 = "" Then per2 = "?"
             valorAp = ws.Range("E15").Value
             
             ' Buscar saldo da Conta Corrente
@@ -71,10 +73,13 @@ Sub AtualizarPainel()
                     End If
                 Else
                     ' Não cumulativo: saldo restante em Q41
-                    On Error Resume Next
-                    saldo = wsCC.Range("Q41").Value
-                    If saldo = 0 Then saldo = wsCC.Range("E7").Value
-                    On Error GoTo 0
+                    Dim vQ41 As Variant
+                    vQ41 = wsCC.Range("Q41").Value
+                    If IsError(vQ41) Or IsEmpty(vQ41) Then
+                        saldo = wsCC.Range("E7").Value
+                    Else
+                        saldo = CDbl(vQ41)
+                    End If
                 End If
             End If
             
